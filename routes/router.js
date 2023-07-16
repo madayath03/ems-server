@@ -17,4 +17,7 @@ router.delete('/employee/delete/:id', userController.deleteUser)
 
 // edit user
 router.put('/employee/edit/:id', upload.single('user_profile'), userController.editUser)
+
+// edit status
+router.put('/employee/edit/status/:id', userController.editStatus)
 module.exports = router

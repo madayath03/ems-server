@@ -88,6 +88,26 @@ exports.editUser = async (req, res) => {
     }
 }
 
+exports.editStatus = async (req, res) => {
+    const { id } = req.params
+
+    // destructuring
+    const { status } = req.body
+
+    try {
+        const updatedUser = await users.findByIdAndUpdate({ _id: id }, {
+            status
+        }, {
+            new: true
+        })
+        await updatedUser.save()
+        res.status(200).json(updatedUser)
+    }
+    catch (error) {
+        res.status(401).json(error)
+    }
+}
+
 exports.deleteUser = async (req, res) => {
     const { id } = req.params
     try {
